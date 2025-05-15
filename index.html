@@ -1,125 +1,158 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>감성 폴라로이드 앨범 </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>감성 폴라로이드 앨범</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 전체 스케일 대상 -->
+  <div id="app">
+    <!-- 추가된 최상단 중앙 타이틀 -->
+    <h1 class="main-title">Happy 4th Anniversary!💑</h1>
 
-  <h1 class="main-title">Happy 4th Anniversary!💑</h1>
+    <!-- 기존에 쓰시던 album-wrapper 시작 -->
+    <div class="album-wrapper">
 
-  <div class="album-wrapper">
-
-  <div class="album-wrapper">
-
-    <!-- ── 메인 앨범 (왼·가·우 3개) ───────────────── -->
-    <div class="album">
-      <!-- LEFT SLIDER -->
-      <div class="slider polaroid">
-        <img id="leftImage" src="images/defualt/photo1-1.jpg" alt="photo1"/>
-        <div class="slider-controls">
-          <button id="leftPrevBtn">&lt;</button>
-          <span id="leftIndicator">1 / 6</span>
-          <button id="leftNextBtn">&gt;</button>
+      <!-- ── 메인 앨범 (왼·가·우 3개) ───────────────── -->
+      <div class="album">
+        <!-- LEFT SLIDER -->
+        <div class="slider polaroid">
+          <img id="leftImage" src="images/defualt/photo1-1.jpg" alt="photo1" />
+          <div class="slider-controls">
+            <button id="leftPrevBtn">&lt;</button>
+            <span id="leftIndicator">1 / 6</span>
+            <button id="leftNextBtn">&gt;</button>
+          </div>
+          <p class="caption">2021.05.24~27 in 제주도</p>
         </div>
-        <p class="caption">2021.05.24~27 in 제주도</p>
+
+        <!-- MIDDLE SLIDER -->
+        <div class="slider note polaroid">
+          <div class="note-watermark">2021.05.24~27 4th Anniversary</div>
+          <div class="note-content">
+            <div class="note-header">To. THE ONE💙</div>
+            <img
+              id="midImage"
+              class="note-image"
+              src="images/defualt/photo2-1.jpg"
+              alt="middle slide"
+            />
+            <div class="note-body" id="midText"></div>
+            <div class="slider-controls">
+              <button id="midPrevBtn">&lt;</button>
+              <span id="midIndicator">1 / 5</span>
+              <button id="midNextBtn">&gt;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SLIDER -->
+        <div class="slider polaroid">
+          <img id="rightImage" src="images/defualt/photo3-1.jpg" alt="photo3" />
+          <div class="slider-controls">
+            <button id="rightPrevBtn">&lt;</button>
+            <span id="rightIndicator">1 / 6</span>
+            <button id="rightNextBtn">&gt;</button>
+          </div>
+          <p class="caption">2021.12.21~26 in 제주도</p>
+        </div>
+      </div>
+      <!-- /.album -->
+
+      <!-- ── 데코 슬롯 4개 ───────────────────────────── -->
+      <div class="decor-slot slider slot-top-left" id="slotTopLeft">
+        <div class="sticker"></div>
+        <img
+          id="slotTopLeftImg"
+          src="images/japan/slot-top-left1.jpg"
+          alt="top-left slide"
+        />
+        <div class="slider-footer">
+          <div class="slider-controls">
+            <button id="slotTopLeftPrev">&lt;</button>
+            <span id="slotTopLeftIndicator">1 / 12</span>
+            <button id="slotTopLeftNext">&gt;</button>
+          </div>
+          <div class="slider-caption">2023.10.05~08 in 오사카</div>
+        </div>
       </div>
 
-      <!-- MIDDLE SLIDER -->
-      <div class="slider note polaroid">
-        <div class="note-watermark">2021.05.24~27 4th Anniversary</div>
-        <div class="note-content">
-          <div class="note-header">To. THE ONE💙</div>
-          <img
-            id="midImage"
-            class="note-image"
-            src="images/defualt/photo2-1.jpg"
-            alt="middle slide"
-          />
-          <div class="note-body" id="midText"></div>
+      <div class="decor-slot slider slot-top-right" id="slotTopRight">
+        <div class="sticker"></div>
+        <img
+          id="slotTopRightImg"
+          src="images/japan/slot-top-right1.jpg"
+          alt="top-right slide"
+        />
+        <div class="slider-footer">
+          <div class="slider-caption">이뿌우운고❤️</div>
           <div class="slider-controls">
-            <button id="midPrevBtn">&lt;</button>
-            <span   id="midIndicator">1 / 5</span>
-            <button id="midNextBtn">&gt;</button>
+            <button id="slotTopRightPrev">&lt;</button>
+            <span id="slotTopRightIndicator">1 / 26</span>
+            <button id="slotTopRightNext">&gt;</button>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT SLIDER -->
-      <div class="slider polaroid">
-        <img id="rightImage" src="images/defualt/photo3-1.jpg" alt="photo3"/>
-        <div class="slider-controls">
-          <button id="rightPrevBtn">&lt;</button>
-          <span id="rightIndicator">1 / 6</span>
-          <button id="rightNextBtn">&gt;</button>
-        </div>
-        <p class="caption">2021.12.21~26 in 제주도</p>
-      </div>
-    </div>
-    <!-- /.album -->
-
-    <!-- ── 데코 슬롯 4개 ───────────────────────────── -->
-    <div class="decor-slot slider slot-top-left" id="slotTopLeft">
-      <div class="sticker"></div>
-      <img id="slotTopLeftImg" src="images/japan/slot-top-left1.jpg" alt="top-left slide"/>
-      <div class="slider-footer">
-        <div class="slider-controls">
-          <button id="slotTopLeftPrev">&lt;</button>
-          <span   id="slotTopLeftIndicator">1 / 12</span>
-          <button id="slotTopLeftNext">&gt;</button>
-        </div>
-        <div class="slider-caption">2023.10.05~08 in 오사카</div>
-      </div>
-    </div>
-
-    <div class="decor-slot slider slot-top-right" id="slotTopRight">
-      <div class="sticker"></div>
-      <img id="slotTopRightImg" src="images/japan/slot-top-right1.jpg" alt="top-right slide"/>
-      <div class="slider-footer">
-        <div class="slider-caption">이뿌우운고❤️</div>
-        <div class="slider-controls">
-          <button id="slotTopRightPrev">&lt;</button>
-          <span   id="slotTopRightIndicator">1 / 26</span>
-          <button id="slotTopRightNext">&gt;</button>
+      <div class="decor-slot slider slot-bottom-left" id="slotBottomLeft">
+        <div class="sticker"></div>
+        <img
+          id="slotBottomLeftImg"
+          src="images/japan/slot-bottom-left1.jpg"
+          alt="bottom-left slide"
+        />
+        <div class="slider-footer">
+          <div class="slider-caption">2021.07.05~08 in 속초</div>
+          <div class="slider-controls">
+            <button id="slotBottomLeftPrev">&lt;</button>
+            <span id="slotBottomLeftIndicator">1 / 8</span>
+            <button id="slotBottomLeftNext">&gt;</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="decor-slot slider slot-bottom-left" id="slotBottomLeft">
-      <div class="sticker"></div>
-      <img id="slotBottomLeftImg" src="images/japan/slot-bottom-left1.jpg" alt="bottom-left slide"/>
-      <div class="slider-footer">
-        <div class="slider-caption">2021.07.05~08 in속초</div>
-        <div class="slider-controls">
-          <button id="slotBottomLeftPrev">&lt;</button>
-          <span   id="slotBottomLeftIndicator">1 / 8</span>
-          <button id="slotBottomLeftNext">&gt;</button>
+      <div class="decor-slot slider slot-bottom-right" id="slotBottomRight">
+        <div class="sticker"></div>
+        <img
+          id="slotBottomRightImg"
+          src="images/japan/slot-bottom-right1.jpg"
+          alt="bottom-right slide"
+        />
+        <div class="slider-footer">
+          <div class="slider-caption">2025.04.12~14 in 제주도</div>
+          <div class="slider-controls">
+            <button id="slotBottomRightPrev">&lt;</button>
+            <span id="slotBottomRightIndicator">1 / 5</span>
+            <button id="slotBottomRightNext">&gt;</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="decor-slot slider slot-bottom-right" id="slotBottomRight">
-      <div class="sticker"></div>
-      <img id="slotBottomRightImg" src="images/japan/slot-bottom-right1.jpg" alt="bottom-right slide"/>
-      <div class="slider-footer">
-        <div class="slider-caption">2025.04.12~14 in 제주도</div>
-        <div class="slider-controls">
-          <button id="slotBottomRightPrev">&lt;</button>
-          <span   id="slotBottomRightIndicator">1 / 5</span>
-          <button id="slotBottomRightNext">&gt;</button>
-        </div>
-      </div>
     </div>
-
+    <!-- /.album-wrapper -->
   </div>
-  <!-- /.album-wrapper -->
+  <!-- /#app -->
 
+  <!-- 기존 script.js (슬라이더 로직) -->
   <script src="script.js"></script>
+  <!-- 화면 크기에 맞춰 축소만 시키는 스케일 스크립트 -->
+  <script>
+    function rescale() {
+      const designW = 960, designH = 720;
+      const vw = window.innerWidth, vh = window.innerHeight;
+      const scale = Math.min(vw / designW, vh / designH);
+      const app = document.getElementById('app');
+      app.style.transformOrigin = 'top left';
+      app.style.transform = `scale(${scale})`;
+    }
+    window.addEventListener('load',  rescale);
+    window.addEventListener('resize', rescale);
+  </script>
 </body>
 </html>
