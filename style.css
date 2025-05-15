@@ -1,37 +1,65 @@
-/* ── 1) HTML & BODY: 절대 스크롤 없이 전체가 보이도록 ───────────────── */
+/* ── 기본 리셋 ───────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── html/body & 터치 줌 활성화 ───────────────── */
 html, body {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;          /* container 밖으로 나가면 보이지 않음 */
+  overflow: hidden;                 /* 스케일된 영역만 보임 */
   font-family: 'Nanum Pen Script', cursive;
   touch-action: pan-x pan-y pinch-zoom;
 }
 
-/* ── 2) 디자인 컨테이너 (#app) ───────────────────────────────────── */
-#app {
-  position: relative;
-  width: 960px;               /* 디자인 기준 폭 */
-  height: 720px;              /* 디자인 기준 높이 */
-  margin: 0 auto;
-  transform-origin: top left;
-  z-index: 1;
-  overflow: visible;          /* 슬롯 등 넘쳐도 보이도록 */
+/* ── 좌·우 반투명 배경 ───────────────────────── */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-pos/* ── 기본 리셋 & 스크롤 허용 ───────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* 양축 스크롤 OK */
+  font-family: 'Nanum Pen Script', cursive;
+  touch-action: pan-x pan-y pinch-zoom;
 }
 
-/* ── 3) 배경 (좌·우 반투명) ──────────────────────────────────────── */
+/* ── 스케일 컨테이너 (#app) ───────────────────────── */
+#app {
+  position: relative;
+  width: 960px;    /* 디자인 기준 */
+  height: 720px;
+  margin: 1cm auto 0; /* 위에 1cm 여백 */
+  overflow: visible;
+  transform-origin: top left;
+  z-index: 1;      /* 배경 위에 */
+}
+
+/* ── 좌·우 반투명 배경 (#app 내부) ───────────────────────── */
 #app::before,
 #app::after {
   content: "";
   position: absolute;
-  top: 0; bottom: 0;
-  width: 50%;                 /* 컨테이너 절반씩 차지 */
+  top: 0;
+  height: 100%;
+  width: 50%;
   background-size: cover;
   background-position: center;
   opacity: 0.75;
-  z-index: 0;
-  pointer-events: none;
+  z-index: 0;     /* 가장 뒤 */
 }
 #app::before {
   left: 0;
@@ -42,35 +70,31 @@ html, body {
   background-image: url('images/defualt/photo2-1.jpg');
 }
 
-/* ── 4) 메인 타이틀 ─────────────────────────────────────────────── */
+/* ── 메인 타이틀 ─────────────────────────────── */
 .main-title {
   position: absolute;
-  top: 3cm;                   /* 타이틀을 위로 3cm 올리기 */
+  top: -3cm;      /* 위로 3cm */
   left: 50%;
   transform: translateX(-50%);
   font-size: 2em;
   color: #007BFF;
   font-weight: bold;
-  z-index: 2;
-  margin: 0;
+  z-index: 2;     /* 앨범·슬롯 위 */
 }
 
-/* ── 5) 앨범 래퍼 & 앨범 ──────────────────────────────────────── */
+/* ── 앨범 래퍼 & 앨범 ───────────────────────── */
 .album-wrapper {
   position: absolute;
-  top: 1cm;                   /* 앨범 상단을 1cm 내리기 */
+  top: 2cm;       /* 타이틀 아래 2cm */
   left: 50%;
   transform: translateX(-50%);
-  width: 800px;               /* 디자인 기준 */
-  z-index: 2;
-}
-.album {
+  width: 800px;   /* 3장 합쳐서 */
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  z-index: 1;
 }
 
-/* ── 6) 폴라로이드 & 노트 & 컨트롤 ─────────────────────────────── */
+/* ── 폴라로이드 / 노트 공통 ─────────────────────── */
 .polaroid {
   width: 220px;
   background: #fff;
@@ -78,79 +102,361 @@ html, body {
   border-radius: 6px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   text-align: center;
-  position: relative; z-index: 2;
+  position: relative;
+  z-index: 2;
 }
-.polaroid img { width: 100%; border-radius: 4px; user-select: none; }
-.caption { margin-top:12px; font-size:1em; color:#333; }
+.polaroid img {
+  width: 100%;
+  border-radius: 4px;
+  user-select: none;
+}
+.caption {
+  margin-top: 12px;
+  font-size: 1em;
+  color: #333;
+}
 
+/* ── 노트 카드 ───────────────────────────────── */
 .note {
-  width: 220px; height: 541px;
-  background: #fffefb; border-radius:6px;
+  width: 220px;
+  height: 541px;
+  background: #fffefb;
+  border-radius: 6px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  overflow: hidden; position: relative; z-index:2;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 .note-watermark {
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  font-size:2.5em; color:rgba(0,0,0,0.03);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2.5em;
+  color: rgba(0,0,0,0.03);
+  pointer-events: none;
 }
 .note-content {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  row-gap:8px; height:100%; padding:12px;
+  gap: 8px;
+  height: 100%;
+  padding: 12px;
 }
-.note-header { font-size:1em; color:#333; }
-.note-image { width:100%; border-radius:4px; display:block; }
-.note-body { overflow-y:auto; }
-.note-body::-webkit-scrollbar { width:6px; }
-.note-body::-webkit-scrollbar-thumb { background:rgba(0,0,0,0.2); border-radius:3px; }
-.note-body::-webkit-scrollbar-track{background:transparent;}
+.note-header { font-size: 1em; color: #333; }
+.note-image {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+}
+.note-body {
+  overflow-y: auto;
+}
+.note-body::-webkit-scrollbar { width: 6px; }
+.note-body::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
 
+/* ── 슬라이더 컨트롤 ───────────────────────── */
 .slider-controls {
-  margin-top:12px; display:flex; justify-content:center; gap:8px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
 }
 .slider-controls button {
-  background:rgba(255,255,255,0.7); border:none;
-  font-size:1.2em; padding:4px 8px; border-radius:4px;
-  cursor:pointer; transition:background .2s;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background .2s;
 }
-.slider-controls button:hover { background:rgba(255,255,255,1); }
-.slider-controls span { font-size:0.9em; color:#333; }
+.slider-controls button:hover {
+  background: rgba(255,255,255,1);
+}
+.slider-controls span {
+  font-size: 0.9em;
+  color: #333;
+}
 
-/* ── 7) 데코 슬롯 ─────────────────────────────────────────────── */
+/* ── 데코 슬롯 ───────────────────────────────── */
 .decor-slot {
-  position:absolute; width:200px; height:320px;
-  background:#fff; padding:8px; border-radius:6px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.15);
-  overflow:visible; transform-origin:center;
-  z-index:3;
+  position: absolute;
+  width: 200px;
+  height: 320px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  overflow: visible;
+  transform-origin: center;
+  z-index: 3;
 }
-.decor-slot img { width:100%; height:75%; object-fit:cover; }
+.decor-slot img {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+}
 .sticker {
-  position:absolute; top:-6px; right:-6px;
-  width:32px; height:32px;
-  background:url('images/sticker.png') no-repeat center/contain;
-  transform:rotate(-20deg); pointer-events:none; z-index:4;
+  position: absolute;
+  top: -6px; right: -6px;
+  width: 32px; height: 32px;
+  background: url('images/sticker.png') no-repeat center/contain;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 4;
 }
+.slot-top-left    { top: 1cm;    left: -15%;  transform: rotate(-12deg); }
+.slot-top-right   { top: 1cm;    right:-15%; transform: rotate(10deg);  }
+.slot-bottom-left { bottom:-20%; left:-10%; transform: rotate(20deg);  }
+.slot-bottom-right{ bottom:-20%; right:-10%;transform: rotate(2deg);   }
 
-/* 슬롯 위치 & 기울기 */
-.slot-top-left    { top:-100px; left:-15%;  transform:rotate(-12deg); }
-.slot-top-right   { top:-15%;   right:-15%; transform:rotate(10deg);  }
-.slot-bottom-left { bottom:-20%; left:-10%; transform:rotate(20deg);  }
-.slot-bottom-right{ bottom:-20%; right:-10%;transform:rotate(2deg);   }
-
+/* ── 슬롯 푸터 ─────────────────────────── */
 .decor-slot .slider-footer {
-  position:absolute; bottom:8px; left:50%;
-  transform:translateX(-50%);
-  display:flex; flex-direction:column; align-items:center;
-  gap:4px; background:rgba(255,255,255,0.8);
-  padding:4px 8px; border-radius:4px; z-index:5;
-  white-space:nowrap;
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.8);
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 5;
+  white-space: nowrap;
 }
-.decor-slot .slider-caption { font-size:0.8em; color:#333; text-align:center; }
-.decor-slot .slider-footer .slider-controls { display:flex; gap:4px; }
+.decor-slot .slider-caption {
+  font-size: 0.8em;
+  color: #333;
+  text-align: center;
+}
+.decor-slot .slider-footer .slider-controls {
+  display: flex;
+  gap: 4px;
+}
 .decor-slot .slider-footer .slider-controls button {
-  background:none; border:none; font-size:1em; padding:2px 4px; cursor:pointer;
+  background: none;
+  border: none;
+  font-size: 1em;
+  padding: 2px 4px;
+  cursor: pointer;
 }
-.decor-slot .slider-footer .slider-controls span { font-size:0.8em; color:#333; }
-  
+.decor-slot .slider-footer .slider-controls span {
+  font-size: 0.8em;
+  color: #333;
+}
+ition: center;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+  pointer-events: none;             /* 클릭은 뒤로 통과 */
+  z-index: -2;                      /* 모든 콘텐츠 뒤 */
+}
+body::before {
+  left: 0;
+  background-image: url('images/defualt/photo1-1.jpg');
+}
+body::after {
+  right: 0;
+  background-image: url('images/defualt/photo2-1.jpg');
+}
+
+/* ── 스케일링 컨테이너 ───────────────────────── */
+#app {
+  position: relative;
+  width: 960px;     /* 디자인 기준 폭 */
+  height: 720px;    /* 디자인 기준 높이 */
+  margin: 1cm auto 0;  /* 맨 위에서 1cm 아래로 내려옴 */
+  overflow: visible;   /* 슬롯이 잘려나가지 않도록 */
+  transform-origin: top left;
+}
+
+/* ── 메인 타이틀 ─────────────────────────────── */
+.main-title {
+  position: absolute;
+   top: -1cm;        
+  transform: translate( 10cm);
+  font-size: 2em;
+  color: #007BFF;
+  font-weight: bold;
+  margin: 0;
+  z-index: 2;           /* 앨범·슬롯 위 */
+}
+
+/* ── 앨범 래퍼 & 앨범 ───────────────────────── */
+.album-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  z-index: 1;           /* 배경 위 */
+}
+.album {
+  position: relative;
+  top: 1cm;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 800px;         /* 필요 시 조정 */
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* ── 폴라로이드 공통 ─────────────────────────── */
+.polaroid {
+  width: 220px;
+  background: #fff;
+  padding: 12px 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.polaroid img {
+  width: 100%;
+  border-radius: 4px;
+  user-select: none;
+}
+.caption {
+  margin-top: 12px;
+  font-size: 1em;
+  color: #333;
+}
+
+/* ── 노트 카드 ───────────────────────────────── */
+.note {
+  width: 220px;
+  height: 541px;        /* 고정 높이 */
+  background: #fffefb;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.note-watermark {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2.5em;
+  color: rgba(0,0,0,0.03);
+  pointer-events: none;
+}
+.note-content {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  row-gap: 8px;
+  height: 100%;
+  padding: 12px;
+}
+.note-header { font-size:1em; color:#333; }
+.note-image {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+}
+.note-body {
+  overflow-y: auto;
+}
+/* 스크롤바 (옵션) */
+.note-body::-webkit-scrollbar { width: 6px; }
+.note-body::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.note-body::-webkit-scrollbar-track { background: transparent; }
+
+/* ── 슬라이더 컨트롤 ───────────────────────── */
+.slider-controls {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;         /* 버튼이 배경 위에서 클릭 가능 */
+}
+.slider-controls button {
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background .2s;
+}
+.slider-controls button:hover { background: rgba(255,255,255,1); }
+.slider-controls span { font-size: 0.9em; color: #333; }
+
+/* ── 데코 슬롯 ───────────────────────────────── */
+.decor-slot {
+  position: absolute;
+  width: 200px;
+  height: 320px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  overflow: visible;
+  transform-origin: center;
+  z-index: 1;         /* 앨범 위에 배치 */
+}
+.decor-slot img {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+}
+.sticker {
+  position: absolute;
+  top: -6px; right: -6px;
+  width: 32px; height: 32px;
+  background: url('images/sticker.png') no-repeat center/contain;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── 슬롯 위치 & 기울기 ─────────────────────── */
+.slot-top-left    { top: 1cm;    left: -15%;  transform: rotate(-12deg); }
+.slot-top-right   { top: 1cm;    right: -15%; transform: rotate(10deg);  }
+.slot-bottom-left { bottom: -20%; left: -10%; transform: rotate(20deg);  }
+.slot-bottom-right{ bottom: -20%; right: -10%;transform: rotate(2deg);   }
+
+/* ── 슬라이더 푸터 ─────────────────────────── */
+.decor-slot .slider-footer {
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.8);
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 2;
+  white-space: nowrap;
+}
+.decor-slot .slider-caption {
+  font-size: 0.8em;
+  color: #333;
+  text-align: center;
+}
+.decor-slot .slider-footer .slider-controls {
+  display: flex;
+  gap: 4px;
+}
+.decor-slot .slider-footer .slider-controls button {
+  background: none;
+  border: none;
+  font-size: 1em;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+.decor-slot .slider-footer .slider-controls span {
+  font-size: 0.8em;
+  color: #333;
+}
