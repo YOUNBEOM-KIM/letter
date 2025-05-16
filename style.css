@@ -4,7 +4,29 @@
   margin: 0;
   padding: 0;
 }
+.main-title-block {
+  position: absolute;
+  top: -1cm;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
 
+ .main-title {
+   font-family: 'Montserrat', sans-serif;
+   font-size: 2.2rem;
+   color: white;
+   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  /*font-weight: bold;
+  margin-bottom: 4px; */
+} 
+
+.main-subtext {
+  font-family: 'Nanum Myeongjo', sans-serif;
+  font-size: 1.2rem;
+  color: #666;
+}
 /* ── html/body & 터치 줌 활성화 ───────────────── */
 html, body {
   width: 100%;
@@ -71,16 +93,16 @@ html, body {
 }
 
 /* ── 메인 타이틀 ─────────────────────────────── */
-.main-title {
+/* .main-title {
   position: absolute;
-  top: -3cm;      /* 위로 3cm */
+  top: -3cm;    
   left: 50%;
   transform: translateX(-50%);
   font-size: 2em;
   color: #007BFF;
   font-weight: bold;
-  z-index: 2;     /* 앨범·슬롯 위 */
-}
+  z-index: 2;   
+} */
 
 /* ── 앨범 래퍼 & 앨범 ───────────────────────── */
 .album-wrapper {
@@ -249,7 +271,7 @@ html, body {
   font-size: 0.8em;
   color: #333;
 }
-ition: center;
+/* position: center; */
   background-repeat: no-repeat;
   opacity: 0.75;
   pointer-events: none;             /* 클릭은 뒤로 통과 */
@@ -275,7 +297,7 @@ body::after {
 }
 
 /* ── 메인 타이틀 ─────────────────────────────── */
-.main-title {
+/* .main-title {
   position: absolute;
    top: -1cm;        
   transform: translate( 10cm);
@@ -283,8 +305,8 @@ body::after {
   color: #007BFF;
   font-weight: bold;
   margin: 0;
-  z-index: 2;           /* 앨범·슬롯 위 */
-}
+  z-index: 2;  
+} */
 
 /* ── 앨범 래퍼 & 앨범 ───────────────────────── */
 .album-wrapper {
@@ -413,7 +435,7 @@ body::after {
   position: absolute;
   top: -6px; right: -6px;
   width: 32px; height: 32px;
-  background: url('images/sticker.png') no-repeat center/contain;
+  /* background: url('images/defualt/photo1-1.jpg') no-repeat center/contain; */
   transform: rotate(-20deg);
   pointer-events: none;
   z-index: 2;
