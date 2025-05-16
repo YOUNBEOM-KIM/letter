@@ -37,22 +37,15 @@ html, body {
 }
 
 /* ── 좌·우 반투명 배경 ───────────────────────── */
-body::before
-/* ,body::after  */
-{
+body::before,
+body::after {
   content: "";
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 50%;
   height: 100%;
-  background-image: url('images/defualt/photo1-1.jpg'); /* 사용하고 싶은 배경 */
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.75;
-  pointer-events: none;  /* 클릭 이벤트 방해하지 않게 */
-  z-index: -1;           /* 가장 뒤로 */
+  background-size: cover;
+  background-pos/* ── 기본 리셋 & 스크롤 허용 ───────────────────────────────── */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -288,10 +281,10 @@ body::before {
   left: 0;
   background-image: url('images/defualt/photo1-1.jpg');
 }
-/* body::after {
+ body::after {
   right: 0;
   background-image: url('images/defualt/photo2-1.jpg');
-} */
+} 
 
 /* ── 스케일링 컨테이너 ───────────────────────── */
 #app {
@@ -300,7 +293,7 @@ body::before {
   height: 720px;    /* 디자인 기준 높이 */
   margin: 1cm auto 0;  /* 맨 위에서 1cm 아래로 내려옴 */
   overflow: visible;   /* 슬롯이 잘려나가지 않도록 */
-  transform-origin: top left;
+  transform-origin: top center;
 }
 
 /* ── 메인 타이틀 ─────────────────────────────── */
