@@ -104,4 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('slotBottomRightPrev').onclick=()=>showSlotBR(slotBRIdx-1);
   document.getElementById('slotBottomRightNext').onclick=()=>showSlotBR(slotBRIdx+1);
   showSlotBR(0);
+
+  function rescale() {
+  const designW = 960, designH = 720;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const scale = Math.min(vw / designW, vh / designH);
+  const app = document.getElementById('app');
+  app.style.transformOrigin = 'top center';
+  app.style.transform = `scale(${scale})`;
+}
 });
