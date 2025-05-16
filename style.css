@@ -7,7 +7,7 @@
 .main-title-block {
   position: absolute;
   top: -1cm;
-  left: 70%;
+  left: 79%;
   /* transform: translateX(-50%); */
   text-align: center;
   z-index: 2;
@@ -15,7 +15,7 @@
 
  .main-title {
    font-family: 'Montserrat', sans-serif;
-   font-size: 2.2rem;
+   font-size: 1.8rem;
    color: white;
    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
   /*font-weight: bold;
@@ -24,7 +24,7 @@
 
 .main-subtext {
   font-family: 'Nanum Myeongjo', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
 }
 /* ── html/body & 터치 줌 활성화 ───────────────── */
@@ -330,10 +330,10 @@ body::before {
 }
 
 /* ── 슬롯 위치 & 기울기 ─────────────────────── */
-.slot-top-left    { top: -1cm;    left: 20%;  transform: rotate(-12deg); }
-.slot-top-right   { top: 0cm;    right: -44%; transform: rotate(10deg);  }
-.slot-bottom-left { bottom: -30%; left: 20%; transform: rotate(20deg);  }
-.slot-bottom-right{ bottom: -25%; right: -44%;transform: rotate(20deg);   }
+.slot-top-left    { top: -1cm;    left: 25%;  transform: rotate(-12deg); }
+.slot-top-right   { top: 0cm;    right: -50%; transform: rotate(10deg);  }
+.slot-bottom-left { bottom: -30%; left: 25%; transform: rotate(20deg);  }
+.slot-bottom-right{ bottom: -25%; right: -50%;transform: rotate(20deg);   }
 
 /* ── 슬라이더 푸터 ─────────────────────────── */
 .decor-slot .slider-footer {
