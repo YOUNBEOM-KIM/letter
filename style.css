@@ -210,7 +210,7 @@ body::before {
   justify-content: space-between;
   align-items: flex-start;
   width: 800px;         /* 필요 시 조정 */
-  transform: translateX(8.5cm); 
+  transform: translateX(9.3cm); 
   margin: 0 auto;
   z-index: 1;
 }
