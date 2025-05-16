@@ -6,10 +6,9 @@
 }
 .main-title-block {
   position: absolute;
-  top: -1cm;
-  left: 79%;
-  /* transform: translateX(-50%); */
-  text-align: center;
+  top: 1cm;
+  right: -1cm;
+  text-align: right;
   z-index: 2;
 }
 
@@ -26,6 +25,8 @@
   font-family: 'Nanum Myeongjo', sans-serif;
   font-size: 1rem;
   color: #666;
+  transform: translateX(-3.5rem);
+  /* margin-left: 5rem; */
 }
 /* ── html/body & 터치 줌 활성화 ───────────────── */
 html, body {
@@ -268,6 +269,7 @@ body::before {
   width: 100%;
   border-radius: 4px;
   display: block;
+  margin-top: 1rem;
 }
 .note-body {
   overflow-y: auto;
