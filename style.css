@@ -7,8 +7,8 @@
 .main-title-block {
   position: absolute;
   top: -1cm;
-  left: 100%;
-  transform: translateX(-50%);
+  left: 70%;
+  /* transform: translateX(-50%); */
   text-align: center;
   z-index: 2;
 }
@@ -205,12 +205,12 @@ body::before {
 }
 .album {
   position: relative;
-  top: 1cm;
+  top: 3cm;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   width: 800px;         /* 필요 시 조정 */
-  transform: translateX(2cm); 
+  transform: translateX(8.5cm); 
   margin: 0 auto;
   z-index: 1;
 }
@@ -330,10 +330,10 @@ body::before {
 }
 
 /* ── 슬롯 위치 & 기울기 ─────────────────────── */
-.slot-top-left    { top: -1cm;    left: -0%;  transform: rotate(-12deg); }
-.slot-top-right   { top: 0cm;    right: -20%; transform: rotate(10deg);  }
-.slot-bottom-left { bottom: -30%; left: 0%; transform: rotate(20deg);  }
-.slot-bottom-right{ bottom: -25%; right: -10%;transform: rotate(20deg);   }
+.slot-top-left    { top: -1cm;    left: 20%;  transform: rotate(-12deg); }
+.slot-top-right   { top: 0cm;    right: -44%; transform: rotate(10deg);  }
+.slot-bottom-left { bottom: -30%; left: 20%; transform: rotate(20deg);  }
+.slot-bottom-right{ bottom: -25%; right: -44%;transform: rotate(20deg);   }
 
 /* ── 슬라이더 푸터 ─────────────────────────── */
 .decor-slot .slider-footer {
